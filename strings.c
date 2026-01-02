@@ -10,17 +10,12 @@
  */
 
 #include <stdio.h>
+#include <string.h>
 #include <strings.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <ctype.h>
 #include <stdlib.h>
-#ifdef __FreeBSD__ 
-#include <string.h> 
-#endif
-#ifdef __linux__ 
-#include <string.h> 
-#endif
 
 #define MAXFILESIZE (4*1024*1024)
 
