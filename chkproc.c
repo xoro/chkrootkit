@@ -195,10 +195,10 @@ int main(int argc, char **argv)
    if (pv < 1 || pv > PS_MAX)
       pv = 1;
    pscmd = ps_cmds[pv];
-/*  printf("pv = %d\n\r", pv); /* -- DEBUG */
+/*  printf("pv = %d\n\r", pv); -- DEBUG */
 #endif
 
-/* printf("pscmd = %s\n\r", pscmd); /* -- DEBUG */
+/* printf("pscmd = %s\n\r", pscmd); -- DEBUG */
    if (!(ps = popen(pscmd, "r")))
    {
        perror("ps");
@@ -243,7 +243,7 @@ int main(int argc, char **argv)
           p++;
       while (isspace(*p)) /* Skip spaces */
           p++;
-/*  printf(">>PS %s<<\n", p);  /* -- DEBUG */
+/*  printf(">>PS %s<<\n", p);  -- DEBUG */
       ret = atol(p);
       if ( ret < 0 || ret > MAX_PROCESSES )
       {
@@ -278,7 +278,7 @@ int main(int argc, char **argv)
       }
 #endif
 
-/*      printf("%s\n", tmp_d_name); /* -- DEBUG */
+/*      printf("%s\n", tmp_d_name); -- DEBUG */
       dirproc[atol(tmp_d_name)] = 1;
    }
    closedir(proc);
