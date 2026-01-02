@@ -3237,8 +3237,8 @@ else
     
     PORTSEP=:
     
-    # Check for macOS/Darwin first
-    if [ "$SYSTEM" = "Darwin" ]; then
+    # Check for macOS/Darwin and OpenBSD first (they don't support -V flag)
+    if [ "$SYSTEM" = "Darwin" -o "$SYSTEM" = "OpenBSD" ]; then
 	PORTSEP=.
 	localports () {
 	    local _proto=""
