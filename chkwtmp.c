@@ -15,7 +15,7 @@
    Nelson Murilo, nmurilo@gmail.com
    07/08/04 - fix del counter value (Thanks to Dietrich Raisin)
    Nelson Murilo, nmurilo@gmail.com
-   09/12/05 - fix Segfault (Thanks to Jérémie Andréi)
+   09/12/05 - fix Segfault (Thanks to Jï¿½rï¿½mie Andrï¿½i)
    Nelson Murilo, nmurilo@gmail.com
 */
 
@@ -43,9 +43,9 @@ int main () { return 0; }
 #endif
 #endif
 
-void printit(counter, start, end)
-int counter;
-long start,end;
+void printit(int counter, long start, long end);
+
+void printit(int counter, long start, long end)
 {
 	char		buffer[30];
 

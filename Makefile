@@ -20,7 +20,9 @@ STATIC   = -static
 ### Mac OS X
 ###
 # If you have Mac OS X, uncomment the next line
-#STATIC =
+STATIC =
+# Suppress deprecated warnings for utmp/lastlog and old-style function definitions on macOS
+CFLAGS += -Wno-deprecated-declarations -Wno-deprecated-non-prototype
 
 ###
 ### FreeBSD or OpenBSD 2.x

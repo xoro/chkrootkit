@@ -3237,6 +3237,34 @@ else
     
     PORTSEP=:
     
+    # Check for macOS/Darwin first
+    if [ "$SYSTEM" = "Darwin" ]; then
+	PORTSEP=.
+	localports () {
+	    local _proto=""
+	    case "$1" in
+		-t) _proto="-p tcp";;
+		-u) _proto="-p udp";;
+	    esac
+	    for family in ${2:-inet inet6}; do
+		$netstat -na -f $family $_proto | {
+		    read _; read _; ntstlp;
+		}
+	    done
+	}
+	remotes () {
+	    local _proto=""
+	    case "$1" in
+		-t) _proto="-p tcp";;
+		-u) _proto="-p udp";;
+	    esac
+	    for family in ${2:-inet inet6}; do
+		$netstat -n -f $family $_proto | {
+		    read _; read _; ntstrm;
+		}
+	    done
+	}
+    else
     _SIGNATURE="$($netstat -V 2>&1 |head -2)"
     case "$_SIGNATURE" in
 	net-tools*)
@@ -3266,7 +3294,7 @@ else
 	    localports () { $netstat -na -f ${2:-inet,inet6} | ntstlp $1; }
 	    remotes () { $netstat -n -f ${2:-inet,inet6} | ntstrm $1; }
 	    ;;
-	netstat:?illegal?option*) # FreeBSD
+	netstat:*illegal*option*) # FreeBSD / macOS
 	    PORTSEP=.
 	    localports () {
 		local _proto=""
@@ -3295,6 +3323,7 @@ else
 	    ;;
 	*) die "chkrootkit: can't detect netstat variant.";;
     esac
+    fi
 fi
 
 if [ "${ROOTDIR}" != "/" ]; then

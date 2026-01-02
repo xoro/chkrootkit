@@ -1,0 +1,19 @@
+# Binaries created by make sense
+chklastlog
+chkwtmp
+ifpromisc
+chkproc
+chkdirs
+check_wtmpx
+strings-static
+chkutmp
+
+# Object files
+*.o
+
+# Core dumps
+core
+
+# macOS specific
+.DS_Store
+

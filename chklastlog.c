@@ -41,6 +41,9 @@ int main () { return 0; }
 #ifdef __linux__
 #include <stdlib.h>
 #endif
+#ifdef __APPLE__
+#include <stdlib.h>
+#endif
 #include <sys/stat.h>
 #include <unistd.h>
 #include <string.h>
